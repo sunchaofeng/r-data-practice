@@ -13,4 +13,4 @@
 * [data.table cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/datatable.pdf)
 
 ## 贡献数据和练习
-##通过GIT将工程文件在此文件中打开
+## 通过GIT将此文件在Rstudio中打开
