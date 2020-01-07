@@ -12,10 +12,10 @@ data[1:5] # show top 5 obs
 # 字符串处理包。这一步不难，稍微有些挑战的是去重。如果我们不去重，那么我们会得到
 # 非常多的重复观测。例如股票600128，如果它一共有100天的观测，那么我们会出现100个
 # 重复结果。为了去重，我们需要借助于data.table中的unique函数。代码如下。
-data[str_detect(symbol,'8'),unique(symbol)][1:5]
+data[str_detect(symbol,'8'),unique(symbol)]
 
 #---2. 每天上涨和下跌的股票各有多少？----
 data[,
      .(num = uniqueN(symbol)),
-     by = .(date, updown = ifelse(close - pre_close > 0, "UP", "DOWN"))
-     ][1:5]
+     keyby = .(date, updown = ifelse(close - pre_close > 0, "UP", "DOWN"))
+     ][1:10]
