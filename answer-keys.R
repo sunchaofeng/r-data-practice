@@ -19,3 +19,12 @@ data[,
      .(num = uniqueN(symbol)),
      keyby = .(date, updown = ifelse(close - pre_close > 0, "UP", "DOWN"))
      ][1:10]
+
+#---3. 每天每个交易所上涨、下跌的股票各有多少？----
+data[,
+     .(num=uniqueN(symbol)),
+     keyby=.(date,
+             exchange=str_sub(symbol,start = -2,end = -1),
+             updown=ifelse(close-pre_close>0,"UP","DOWN"))
+     ][1:5]
+
